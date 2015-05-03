@@ -1,8 +1,10 @@
 package com.softpontaj.www;
 
 
+import java.awt.Desktop;
 import java.io.File;
 import java.util.logging.Logger;
+
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -15,17 +17,19 @@ import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
+
 import com.healthmarketscience.jackcess.*;
+
 import java.io.*;
 import java.util.*;
 import java.sql.*;
 import java.nio.*;
 import java.lang.*;
-//import org.apache.commons.*;
-//import org.apache.commons.lang3.builder.*;
-//import org.apache.log4j.Logger;
-//import org.apache.log4j.xml.DOMConfigurator;
-//
+/*import org.apache.commons.*;
+import org.apache.commons.lang3.builder.*;
+import org.apache.log4j.Logger;
+import org.apache.log4j.xml.DOMConfigurator;*/
+
 /**
  *
  * @author usr
@@ -49,7 +53,11 @@ public class SoftPontajMain extends Application {
 				FileChooser fileChooser = new FileChooser();
 				File file = fileChooser.showOpenDialog(primaryStage);
                 if (file != null) {
-                    System.out.println("file has opened");
+                	 try {
+                         Desktop.getDesktop().open(file);
+                     } catch (IOException e) {
+                         e.printStackTrace();
+                     }
                 }
 				
 			}
